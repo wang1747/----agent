@@ -13,8 +13,8 @@ def get_attraction(city:str,weather:str)->str:
         #2.创建Tavily客户端
         tavily=TavilyClient(api_key=api_key)
 
-        #3.构建一个精确的查询
-        query=f"{city}在{weather}天气下最值得去的景点推荐及理由"
+        #3.构建一个精确的查询，要求中文结果
+        query=f"{city}在{weather}天气下最值得去的景点推荐及理由，请用中文回答"
 
         try:
                 #4.调用API，include_answer=True会返回一个综合性的回答

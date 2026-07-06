@@ -7,7 +7,8 @@ class OpenAICompatibleClient:
 
         def __init__(self,model:str,api_key:str,base_url:str):
                 self.model=model
-
+                self.api_key=api_key
+                self.base_url=base_url
                 self.client=OpenAI(api_key=self.api_key,base_url=self.base_url)
 
         def generate(self,prompt:str,system_prompt:str)->str:
@@ -26,7 +27,7 @@ class OpenAICompatibleClient:
                                 model=self.model,
                                 messages=message,
                                 temperature=0.7,
-                                max_tokens=1024
+                                max_tokens=1024,
                                 stream=False
                         )
 
