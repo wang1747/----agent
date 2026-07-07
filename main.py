@@ -1,7 +1,11 @@
 import re
 import os
+from dotenv import load_dotenv
 from OpenAICompatibleClient import OpenAICompatibleClient
 from tool import available_tools
+
+# 加载 .env 文件中的环境变量
+load_dotenv()
 
 
 with open("system_prompt", "r", encoding="utf-8") as f:
@@ -10,11 +14,11 @@ with open("system_prompt", "r", encoding="utf-8") as f:
 
 
 #1.配置LLM客户端
-API_KEY="REDACTED"
-base_url="https://api.deepseek.com/v1"
-model_id="deepseek-v4-flash"
-tavily_api_key="REDACTED"
-os.environ["TAVILY_API_KEY"]="REDACTED"
+API_KEY = os.getenv("DEEPSEEK_API_KEY")
+base_url = os.getenv("DEEPSEEK_BASE_URL")
+model_id = os.getenv("DEEPSEEK_MODEL_ID")
+tavily_api_key = os.getenv("TAVILY_API_KEY")
+os.environ["TAVILY_API_KEY"] = tavily_api_key
 
 llm=OpenAICompatibleClient(model_id,API_KEY,base_url=base_url)
 
